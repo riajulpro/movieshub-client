@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Template from "../layout/Template";
-import ErrorPage from "../layout/ErrorPage";
+// import ErrorPage from "../layout/ErrorPage";
 import Home from "../pages/Public/Home";
 import Login from "../pages/Public/Login";
 import Register from "../pages/Public/Register";
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Template />,
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -45,7 +45,9 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(
+            `https://riajulpro-assingment-10-lae88il3n-riajul-pros-projects.vercel.app/products/${params.id}`
+          ),
       },
       {
         path: "/brand_products",
@@ -59,17 +61,19 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/register",
-        element: <Register />,
+          fetch(
+            `https://riajulpro-assingment-10-lae88il3n-riajul-pros-projects.vercel.app/products/${params.id}`
+          ),
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
   },
 ]);
 

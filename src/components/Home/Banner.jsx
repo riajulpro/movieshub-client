@@ -15,7 +15,9 @@ const Banner = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch(
+      "https://riajulpro-assingment-10-lae88il3n-riajul-pros-projects.vercel.app/products"
+    )
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);

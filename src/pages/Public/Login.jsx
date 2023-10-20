@@ -14,12 +14,14 @@ const Login = () => {
   const googleLogin = () => {
     loginWithGoogle()
       .then(() => {
-        Swal.fire(
-          "You have successfully login!",
-          "Now you can access all features.",
-          "success"
+        return (
+          Swal.fire(
+            "You have successfully login!",
+            "Now you can access all features.",
+            "success"
+          ),
+          navigateTo(location?.state ? location.state : "/")
         );
-        navigateTo(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.log(error.message);
@@ -61,6 +63,11 @@ const Login = () => {
         navigateTo(location?.state ? location.state : "/");
       })
       .catch((error) => {
+        Swal.fire(
+          "User or Password Wrong!",
+          "Please use correct user and password",
+          "error"
+        );
         console.log(error);
       });
   };

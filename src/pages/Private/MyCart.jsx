@@ -7,7 +7,9 @@ const MyCart = () => {
   const { user } = useContext(AuthProvider);
 
   useEffect(() => {
-    fetch("http://localhost:5000/myCart")
+    fetch(
+      "https://riajulpro-assingment-10-lae88il3n-riajul-pros-projects.vercel.app/myCart"
+    )
       .then((res) => res.json())
       .then((data) => {
         const currentData = data.filter(
@@ -23,12 +25,15 @@ const MyCart = () => {
     setMyNewCart(myCart);
   }, [myCart]);
 
-  console.log(myNewCart);
+  console.log(myNewCart, myCart);
 
   const deleteAnItem = (itemId) => {
-    fetch(`http://localhost:5000/my_cart/${itemId}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://riajulpro-assingment-10-lae88il3n-riajul-pros-projects.vercel.app/my_cart/${itemId}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

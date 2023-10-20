@@ -6,12 +6,15 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const MostViewed = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch(
+      "https://riajulpro-assingment-10-lae88il3n-riajul-pros-projects.vercel.app/products"
+    )
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -36,7 +39,9 @@ const MostViewed = () => {
         >
           {products.map((product) => (
             <SwiperSlide key={product._id}>
-              <img src={product.imageURL} alt="" className="h-96" />
+              <Link to={`/product_details/${product._id}`}>
+                <img src={product.imageURL} alt="" className="h-96" />
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>

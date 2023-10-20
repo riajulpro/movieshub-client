@@ -13,7 +13,9 @@ const BrandProducts = () => {
   const location = useLocation();
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch(
+      "https://riajulpro-assingment-10-lae88il3n-riajul-pros-projects.vercel.app/products"
+    )
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -21,6 +23,8 @@ const BrandProducts = () => {
   const currentBrandProducts = products.filter(
     (product) => product.brandName === location.state
   );
+
+  console.log(products);
 
   if (currentBrandProducts.length === 0) {
     console.log("there is no existing product of the brand");
@@ -59,7 +63,7 @@ const BrandProducts = () => {
           There is no existing product of the brand
         </div>
       ) : (
-        <div className="w-11/12 md:w-9/12 mx-auto grid grid-cols-1 my-5">
+        <div className="w-11/12 md:w-9/12 mx-auto grid grid-cols-1 gap-3 my-5">
           {currentBrandProducts.map((product) => (
             <div
               key={product._id}

@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 const AddProduct = () => {
   const addProductHandle = (event) => {
     event.preventDefault();
@@ -23,15 +25,23 @@ const AddProduct = () => {
 
     console.log(productInfo);
 
-    fetch("http://localhost:5000/products", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(productInfo),
-    })
+    fetch(
+      "https://riajulpro-assingment-10-lae88il3n-riajul-pros-projects.vercel.app/products",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(productInfo),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
+        Swal.fire(
+          "You have successfully added!",
+          "You can add more movies.",
+          "success"
+        );
         console.log(data);
       });
 

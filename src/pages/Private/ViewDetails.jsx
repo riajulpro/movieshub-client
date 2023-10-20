@@ -36,13 +36,16 @@ const ViewDetails = () => {
   console.log(cartData, id, user);
 
   const addToCart = () => {
-    fetch("http://localhost:5000/myCart", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(cartData),
-    })
+    fetch(
+      "https://riajulpro-assingment-10-lae88il3n-riajul-pros-projects.vercel.app/myCart",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(cartData),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         Swal.fire(

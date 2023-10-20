@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
 import auth from "../firebase/firebase.config";
 
-export const AuthProvider = createContext();
+export const AuthProvider = createContext(null);
 
 const AuthContext = ({ children }) => {
   // Setting logged user information in a state
