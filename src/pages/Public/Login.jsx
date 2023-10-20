@@ -119,21 +119,21 @@ const Login = () => {
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>
               </div>
-              <div>
-                <p>Or Sign In Using</p>
-                <div className="flex items-center justify-center gap-2 my-3">
-                  <button onClick={googleLogin} className="btn btn-accent">
-                    Google
-                  </button>
-                  <button onClick={githubLogin} className="btn btn-accent">
-                    GitHub
-                  </button>
-                </div>
-              </div>
-              <div className="text-center">
-                Do not have an account? <Link to={"/register"}>Register</Link>
-              </div>
             </form>
+            <div>
+              <p>Or Sign In Using</p>
+              <div className="flex items-center justify-center gap-2 my-3">
+                <button onClick={googleLogin} className="btn btn-accent">
+                  Google
+                </button>
+                <button onClick={githubLogin} className="btn btn-accent">
+                  GitHub
+                </button>
+              </div>
+            </div>
+            <div className="text-center">
+              Do not have an account? <Link to={"/register"}>Register</Link>
+            </div>
           </div>
         </div>
       </div>
