@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import { AuthProvider } from "../../context/AuthContext";
+import Swal from "sweetalert2";
 
 const ViewDetails = () => {
   const id = useParams();
@@ -44,6 +45,11 @@ const ViewDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        Swal.fire(
+          "You have successfully added to the cart!",
+          "Check in the cart",
+          "success"
+        );
         console.log(data);
       });
   };

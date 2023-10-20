@@ -41,16 +41,19 @@ const Header = () => {
 
   const unLoggedUser = (
     <>
-      <li>
-        <Link to={"/login"} className="ml-3 bg-primary rounded-none text-white">
+      <div>
+        <Link to={"/login"} className="btn bg-primary rounded-none text-white">
           Login
         </Link>
-      </li>
-      <li>
-        <Link to={"/register"} className="bg-secondary rounded-none text-white">
+      </div>
+      <div>
+        <Link
+          to={"/register"}
+          className="btn bg-secondary rounded-none text-white"
+        >
           Register
         </Link>
-      </li>
+      </div>
     </>
   );
 

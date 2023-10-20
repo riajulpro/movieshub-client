@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthProvider } from "../../context/AuthContext";
+import Swal from "sweetalert2";
 
 const MyCart = () => {
   const [myCart, setMyCart] = useState([]);
@@ -33,6 +34,11 @@ const MyCart = () => {
         console.log(data);
         const filterData = myCart.filter((cart) => cart._id !== itemId);
         setMyNewCart(filterData);
+        Swal.fire(
+          "You have successfully deleted!",
+          "The item has been deleted from the cart",
+          "success"
+        );
       });
   };
 

@@ -9,6 +9,7 @@ import MyCart from "../pages/Private/MyCart";
 import UpdateProduct from "../pages/Private/UpdateProduct";
 import BrandProducts from "../pages/Public/BrandProducts";
 import ViewDetails from "../pages/Private/ViewDetails";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -22,15 +23,27 @@ const router = createBrowserRouter([
       },
       {
         path: "/add_product",
-        element: <AddProduct />,
+        element: (
+          <PrivateRoutes>
+            <AddProduct />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/my_cart",
-        element: <MyCart />,
+        element: (
+          <PrivateRoutes>
+            <MyCart />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/update_product/:id",
-        element: <UpdateProduct />,
+        element: (
+          <PrivateRoutes>
+            <UpdateProduct />
+          </PrivateRoutes>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/products/${params.id}`),
       },
@@ -40,19 +53,23 @@ const router = createBrowserRouter([
       },
       {
         path: "/product_details/:id",
-        element: <ViewDetails />,
+        element: (
+          <PrivateRoutes>
+            <ViewDetails />
+          </PrivateRoutes>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/products/${params.id}`),
       },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
     ],
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/register",
-    element: <Register />,
   },
 ]);
 
