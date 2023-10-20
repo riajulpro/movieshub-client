@@ -1,7 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 import LogoIcon from "../assets/icons/logo.svg";
+import { useContext } from "react";
+import { AuthProvider } from "../context/AuthContext";
 
 const Header = () => {
+  const { user, logoutAccount } = useContext(AuthProvider);
+
+  console.log(user);
+
   const links = (
     <>
       <li>
@@ -15,6 +21,39 @@ const Header = () => {
       </li>
     </>
   );
+
+  const loggedUserData = (
+    <>
+      <div>{user?.displayName}</div>
+      <div>
+        <img src={user?.photoURL} alt="" className="w-10 h-10 rounded-full" />
+      </div>
+      <div>
+        <Link
+          onClick={() => logoutAccount()}
+          className="btn bg-primary rounded-none text-white"
+        >
+          Logout
+        </Link>
+      </div>
+    </>
+  );
+
+  const unLoggedUser = (
+    <>
+      <li>
+        <Link to={"/login"} className="ml-3 bg-primary rounded-none text-white">
+          Login
+        </Link>
+      </li>
+      <li>
+        <Link to={"/register"} className="bg-secondary rounded-none text-white">
+          Register
+        </Link>
+      </li>
+    </>
+  );
+
   return (
     <header>
       <div className="navbar bg-base-100 md:w-9/12 md:mx-auto">
@@ -41,12 +80,6 @@ const Header = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               {links}
-              <li>
-                <Link to={"/login"}>Login</Link>
-              </li>
-              <li>
-                <Link to={"/register"}>Register</Link>
-              </li>
             </ul>
           </div>
           <Link to={"/"} className="font-bold text-xl flex items-center">
@@ -56,26 +89,11 @@ const Header = () => {
             </div>
           </Link>
         </div>
-        <div className="navbar-end hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            {links}
-            <li>
-              <Link
-                to={"/login"}
-                className="ml-3 bg-primary rounded-none text-white"
-              >
-                Login
-              </Link>
-            </li>
-            <li>
-              <Link
-                to={"/register"}
-                className="bg-secondary rounded-none text-white"
-              >
-                Register
-              </Link>
-            </li>
-          </ul>
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-1">{links}</ul>
+        </div>
+        <div className="navbar-end hidden lg:flex lg:items-center gap-1">
+          {user ? loggedUserData : unLoggedUser}
         </div>
       </div>
     </header>
