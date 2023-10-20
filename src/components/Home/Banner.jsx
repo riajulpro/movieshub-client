@@ -9,6 +9,7 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   const [products, setProducts] = useState([]);
@@ -28,7 +29,7 @@ const Banner = () => {
         centeredSlides={true}
         autoplay={{
           delay: 2500,
-          disableOnInteraction: false,
+          disableOnInteraction: true,
         }}
         loop={true}
         pagination={{
@@ -43,8 +44,7 @@ const Banner = () => {
             <div
               className="hero min-h-screen"
               style={{
-                backgroundImage:
-                  `url(${product.imageURL})`,
+                backgroundImage: `url(${product.imageURL})`,
               }}
             >
               <div className="hero-overlay bg-opacity-60"></div>
@@ -54,7 +54,9 @@ const Banner = () => {
                     {product.productName}
                   </h1>
                   <p className="mb-5">{product.description}</p>
-                  <button className="btn btn-primary">View Details</button>
+                  <Link to={`/product_details/${product._id}`}>
+                    <button className="btn btn-primary">View Details</button>
+                  </Link>
                 </div>
               </div>
             </div>

@@ -8,8 +8,13 @@ const MyCart = () => {
   useEffect(() => {
     fetch("http://localhost:5000/myCart")
       .then((res) => res.json())
-      .then((data) => setMyCart(data));
-  }, []);
+      .then((data) => {
+        const currentData = data.filter(
+          (now) => now?.userEmail === user?.email
+        );
+        setMyCart(currentData);
+      });
+  }, [user]);
 
   const [myNewCart, setMyNewCart] = useState([]);
 
@@ -48,7 +53,7 @@ const MyCart = () => {
           <tbody>
             {myNewCart.length === 0 ? (
               <tr className="text-center">
-                <td colSpan={"8"}>There is data on the cart.</td>
+                <td colSpan={"8"}>There is no data on the cart.</td>
               </tr>
             ) : (
               myCart.map((cart) => (

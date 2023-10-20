@@ -30,7 +30,7 @@ const ViewDetails = () => {
     rating,
   };
 
-  const cartData = Object.assign(dataToSend, { userEmail: "cacamia@caci.com" });
+  const cartData = Object.assign(dataToSend, { userEmail: user?.email });
 
   console.log(cartData, id, user);
 
@@ -54,10 +54,10 @@ const ViewDetails = () => {
         key={_id}
         className="card lg:card-side bg-base-100 shadow-xl my-5 w-11/12 md:w-9/12 mx-auto"
       >
-        <figure>
-          <img src={imageURL} alt="Movie" className="w-96" />
+        <figure className="flex-1">
+          <img src={imageURL} alt="Movie" className="" />
         </figure>
-        <div className="card-body">
+        <div className="card-body flex-1">
           <h2 className="card-title">{productName}</h2>
           <div className="mb-auto">
             <p>Type: {type}</p>

@@ -59,18 +59,18 @@ const BrandProducts = () => {
           There is no existing product of the brand
         </div>
       ) : (
-        <div className="w-11/12 md:w-9/12 mx-auto grid grid-cols-1 md:grid-cols-2 gap-3 my-5">
+        <div className="w-11/12 md:w-9/12 mx-auto grid grid-cols-1 my-5">
           {currentBrandProducts.map((product) => (
             <div
               key={product._id}
-              className="card card-side bg-base-100 shadow-xl"
+              className="card lg:card-side bg-base-100 shadow-xl"
             >
-              <figure>
-                <img src={product.imageURL} alt="Movie" className="h-56" />
+              <figure className="flex-1">
+                <img src={product.imageURL} alt="Movie" className="h-80" />
               </figure>
-              <div className="card-body">
+              <div className="card-body flex-1">
                 <h2 className="card-title">{product.productName}</h2>
-                <p>{product.description}</p>
+                <p className="text-sm">{product.description}</p>
                 <div className="card-actions justify-end">
                   <Link to={`/update_product/${product._id}`}>
                     <button className="btn btn-primary">Update</button>

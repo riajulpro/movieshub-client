@@ -1,4 +1,5 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UpdateProduct = () => {
   const id = useParams();
@@ -40,6 +41,11 @@ const UpdateProduct = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        Swal.fire(
+          "You have successfully updated!",
+          "Check the details",
+          "success"
+        );
         console.log(data);
       });
   };
