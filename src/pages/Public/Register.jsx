@@ -1,24 +1,55 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthProvider } from "../../context/AuthContext";
+import { updateProfile } from "firebase/auth";
+import Swal from "sweetalert2";
 
 const Register = () => {
-  const registerHandle = (event) => {
-    event.preventDefault();
+  const navigateTo = useNavigate();
 
-    const form = event.target;
-    const username = form.username.value;
-    const email = form.email.value;
-    const password = form.password.value;
+  const { createAccount } = useContext(AuthProvider);
 
-    const user = {
-      username,
-      email,
-      password,
-    };
+  const registerHandle = (e) => {
+    e.preventDefault();
 
-    console.log(user);
+    const form = new FormData(e.currentTarget);
 
-    form.reset();
+    const username = form.get("username");
+    const picture = form.get("picture");
+    const email = form.get("email");
+    const password = form.get("password");
+
+    if (/^(?=.*[A-Z])(?=.*[\W_]).{6,}$/.test(password)) {
+      createAccount(email, password)
+        .then((result) => {
+          updateProfile(result.user, {
+            displayName: username,
+            photoURL: picture,
+          })
+            .then(() => {
+              Swal.fire(
+                "You have successfully register!",
+                "Please login now!",
+                "success"
+              );
+              navigateTo("/login");
+            })
+            .catch((error) => {
+              console.log(error.message);
+            });
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    } else {
+      Swal.fire(
+        "Full-Fill the requirements of the password!",
+        "Your password must have 6 characters include a capital and a special symbol",
+        "error"
+      );
+    }
   };
+
   return (
     <>
       <div className="hero min-h-screen bg-base-200">
@@ -44,6 +75,19 @@ const Register = () => {
                   type="text"
                   placeholder="full name"
                   name="username"
+                  defaultValue={""}
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Profile Picture</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="enter picture url"
+                  name="picture"
                   defaultValue={""}
                   className="input input-bordered"
                   required

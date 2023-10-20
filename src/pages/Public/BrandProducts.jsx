@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, FreeMode, Pagination } from "swiper/modules";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
 
 const BrandProducts = () => {
   const [products, setProducts] = useState([]);
@@ -23,6 +30,30 @@ const BrandProducts = () => {
 
   return (
     <>
+      <div className="md:w-9/12 mx-auto my-5">
+        <Swiper
+          slidesPerView={3}
+          spaceBetween={30}
+          freeMode={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          loop={true}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Autoplay, FreeMode, Pagination]}
+          className="mySwiper"
+        >
+          {products.map((product) => (
+            <SwiperSlide key={product._id}>
+              <img src={product.imageURL} alt="" className="h-96" />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
       {currentBrandProducts.length === 0 ? (
         <div className="text-center my-5">
           There is no existing product of the brand
@@ -41,6 +72,9 @@ const BrandProducts = () => {
                 <h2 className="card-title">{product.productName}</h2>
                 <p>{product.description}</p>
                 <div className="card-actions justify-end">
+                  <Link to={`/update_product/${product._id}`}>
+                    <button className="btn btn-primary">Update</button>
+                  </Link>
                   <Link to={`/product_details/${product._id}`}>
                     <button className="btn btn-primary">View Details</button>
                   </Link>
