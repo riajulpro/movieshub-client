@@ -66,8 +66,12 @@ const BrandProducts = () => {
       </div>
 
       {currentBrandProducts.length === 0 ? (
-        <div className="text-center my-5">
-          There is no existing product of the brand
+        <div className="flex flex-col items-center justify-between gap-1 my-5 md:my-10">
+          <img
+            src="https://i.ibb.co/gwsFYfc/2953962-removebg-preview.png"
+            alt=""
+          />
+          <p>There is no existing product of the brand</p>
         </div>
       ) : (
         <div className="w-11/12 md:w-9/12 mx-auto grid grid-cols-1 gap-3 my-5">

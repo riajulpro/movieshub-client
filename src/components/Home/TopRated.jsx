@@ -13,8 +13,6 @@ const TopRated = () => {
 
   const topRated = products.filter((product) => product.rating >= 7);
 
-  console.log(topRated, products);
-
   useEffect(() => {
     fetch(
       "https://riajulpro-assingment-10-lae88il3n-riajul-pros-projects.vercel.app/products"
@@ -24,7 +22,7 @@ const TopRated = () => {
   }, []);
   return (
     <div>
-      <div className="md:w-9/12 mx-auto my-5 md:my-10">
+      <div className="w-11/12 md:w-9/12 mx-auto my-5 md:my-10">
         <h1 className="text-3xl mb-3 font-bold">Top Rated Movies</h1>
         <Swiper
           slidesPerView={3}
@@ -44,7 +42,7 @@ const TopRated = () => {
           {topRated.map((product) => (
             <SwiperSlide key={product._id}>
               <Link to={`/product_details/${product._id}`}>
-                <img src={product.imageURL} alt="" className="h-96" />
+                <img src={product.imageURL} alt="" className="md:h-96" />
               </Link>
             </SwiperSlide>
           ))}

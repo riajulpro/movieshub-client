@@ -22,8 +22,6 @@ const Banner = () => {
       .then((data) => setProducts(data));
   }, []);
 
-  console.log(products);
-
   return (
     <>
       <Swiper
