@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthProvider } from "../../context/AuthContext";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const MyCart = () => {
   const [myCart, setMyCart] = useState([]);
@@ -48,6 +49,10 @@ const MyCart = () => {
   };
 
   return (
+    <>
+    <Helmet>
+      <title>You have {myNewCart.length} data on cart</title>
+    </Helmet>
     <div className="w-11/12 md:w-9/12 mx-auto my-5">
       <div className="overflow-x-auto">
         <table className="table">
@@ -88,6 +93,7 @@ const MyCart = () => {
         </table>
       </div>
     </div>
+    </>
   );
 };
 

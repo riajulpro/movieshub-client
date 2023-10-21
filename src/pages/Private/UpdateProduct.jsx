@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { useLoaderData, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -55,6 +56,9 @@ const UpdateProduct = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Update the data of {productName}</title>
+      </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row md:w-9/12 mx-auto">
           <div className="text-center lg:text-left">

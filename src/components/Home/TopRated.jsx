@@ -8,8 +8,12 @@ import "swiper/css/pagination";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const MostViewed = () => {
+const TopRated = () => {
   const [products, setProducts] = useState([]);
+
+  const topRated = products.filter((product) => product.rating >= 7);
+
+  console.log(topRated, products);
 
   useEffect(() => {
     fetch(
@@ -20,8 +24,8 @@ const MostViewed = () => {
   }, []);
   return (
     <div>
-      <div className="md:w-9/12 mx-auto my-5">
-        <h1 className="text-3xl mb-3 font-bold">Most Viewed Movies</h1>
+      <div className="md:w-9/12 mx-auto my-5 md:my-10">
+        <h1 className="text-3xl mb-3 font-bold">Top Rated Movies</h1>
         <Swiper
           slidesPerView={3}
           spaceBetween={30}
@@ -37,7 +41,7 @@ const MostViewed = () => {
           modules={[Autoplay, FreeMode, Pagination]}
           className="mySwiper"
         >
-          {products.map((product) => (
+          {topRated.map((product) => (
             <SwiperSlide key={product._id}>
               <Link to={`/product_details/${product._id}`}>
                 <img src={product.imageURL} alt="" className="h-96" />
@@ -50,4 +54,4 @@ const MostViewed = () => {
   );
 };
 
-export default MostViewed;
+export default TopRated;

@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthProvider } from "../../context/AuthContext";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const navigateTo = useNavigate();
@@ -74,6 +75,9 @@ const Login = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Login now</title>
+      </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse md:w-3/4 md:mx-auto">
           <div className="text-center lg:text-left">

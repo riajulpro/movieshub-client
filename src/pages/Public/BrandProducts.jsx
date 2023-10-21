@@ -7,6 +7,7 @@ import { Autoplay, FreeMode, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
+import { Helmet } from "react-helmet";
 
 const BrandProducts = () => {
   const [products, setProducts] = useState([]);
@@ -34,6 +35,9 @@ const BrandProducts = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Movies of {location.state}</title>
+      </Helmet>
       <div className="md:w-9/12 mx-auto my-5">
         <Swiper
           slidesPerView={3}
@@ -52,7 +56,12 @@ const BrandProducts = () => {
         >
           {products.map((product) => (
             <SwiperSlide key={product._id}>
-              <img src={product.imageURL} alt="" className="h-96" />
+              <Link
+                to={`/product_details/${product._id}`}
+                className="cursor-pointer"
+              >
+                <img src={product.imageURL} alt="" className="h-96" />
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>

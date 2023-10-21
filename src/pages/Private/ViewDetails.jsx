@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import { AuthProvider } from "../../context/AuthContext";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const ViewDetails = () => {
   const id = useParams();
@@ -59,6 +60,9 @@ const ViewDetails = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>You are watching the data information</title>
+      </Helmet>
       <div
         key={_id}
         className="card lg:card-side bg-base-100 shadow-xl my-5 w-11/12 md:w-9/12 mx-auto"

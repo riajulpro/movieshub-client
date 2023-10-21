@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
 
 const AddProduct = () => {
@@ -49,6 +50,9 @@ const AddProduct = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Add Products now</title>
+      </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row md:w-9/12 mx-auto">
           <div className="text-center lg:text-left">

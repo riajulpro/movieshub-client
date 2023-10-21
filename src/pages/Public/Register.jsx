@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthProvider } from "../../context/AuthContext";
 import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const navigateTo = useNavigate();
@@ -52,6 +53,9 @@ const Register = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Create an account</title>
+      </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse md:w-3/4 md:mx-auto">
           <div className="text-center lg:text-left">
