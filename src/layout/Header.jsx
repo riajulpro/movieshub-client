@@ -100,7 +100,11 @@ const Header = () => {
               {links}
               <li className="text-center">{user?.displayName}</li>
               <li>
-                <Link onClick={() => logoutAccount()}>Logout</Link>
+                {user ? (
+                  <Link onClick={() => logoutAccount()}>Logout</Link>
+                ) : (
+                  <Link to={"/login"}>Login</Link>
+                )}
               </li>
             </ul>
           </div>
