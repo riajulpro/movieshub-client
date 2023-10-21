@@ -9,7 +9,7 @@ const MyCart = () => {
 
   useEffect(() => {
     fetch(
-      "https://riajulpro-assingment-10-lae88il3n-riajul-pros-projects.vercel.app/myCart"
+      "https://riajulpro-assingment-10-hvg430qx7-riajul-pros-projects.vercel.app/myCart"
     )
       .then((res) => res.json())
       .then((data) => {
@@ -30,7 +30,7 @@ const MyCart = () => {
 
   const deleteAnItem = (itemId) => {
     fetch(
-      `https://riajulpro-assingment-10-lae88il3n-riajul-pros-projects.vercel.app/my_cart/${itemId}`,
+      `https://riajulpro-assingment-10-hvg430qx7-riajul-pros-projects.vercel.app/my_cart/${itemId}`,
       {
         method: "DELETE",
       }

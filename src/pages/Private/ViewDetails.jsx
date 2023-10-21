@@ -38,7 +38,7 @@ const ViewDetails = () => {
 
   const addToCart = () => {
     fetch(
-      "https://riajulpro-assingment-10-lae88il3n-riajul-pros-projects.vercel.app/myCart",
+      "https://riajulpro-assingment-10-hvg430qx7-riajul-pros-projects.vercel.app/myCart",
       {
         method: "POST",
         headers: {

@@ -46,7 +46,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://riajulpro-assingment-10-lae88il3n-riajul-pros-projects.vercel.app/products/${params.id}`
+            `https://riajulpro-assingment-10-hvg430qx7-riajul-pros-projects.vercel.app/products/${params.id}`
           ),
       },
       {
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://riajulpro-assingment-10-lae88il3n-riajul-pros-projects.vercel.app/products/${params.id}`
+            `https://riajulpro-assingment-10-hvg430qx7-riajul-pros-projects.vercel.app/products/${params.id}`
           ),
       },
     ],
