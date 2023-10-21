@@ -84,8 +84,11 @@ const BrandProducts = () => {
                 <img src={product.imageURL} alt="Movie" className="h-80" />
               </figure>
               <div className="card-body flex-1">
-                <h2 className="card-title">{product.productName}</h2>
-                <p className="text-sm">{product.description}</p>
+                <h2 className="card-title">Name: {product.productName}</h2>
+                <p className="text-sm">Brand: {product.brandName}</p>
+                <p className="text-sm">Type: {product.type}</p>
+                <p className="text-sm">Price: {product.price}</p>
+                <p className="text-sm">Rating: {product.rating}/10</p>
                 <div className="card-actions justify-end">
                   <Link to={`/update_product/${product._id}`}>
                     <button className="btn btn-primary">Update</button>
