@@ -72,7 +72,7 @@ const MyCart = () => {
                   <td colSpan={"8"}>There is no data on the cart.</td>
                 </tr>
               ) : (
-                myCart.map((cart) => (
+                myNewCart.map((cart) => (
                   <tr key={cart._id}>
                     <th></th>
                     <td>{cart.productName}</td>
