@@ -50,49 +50,49 @@ const MyCart = () => {
 
   return (
     <>
-    <Helmet>
-      <title>You have {myNewCart.length} data on cart</title>
-    </Helmet>
-    <div className="w-11/12 md:w-9/12 mx-auto my-5">
-      <div className="overflow-x-auto">
-        <table className="table">
-          {/* head */}
-          <thead>
-            <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Rating</th>
-              <th>Price</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {myNewCart.length === 0 ? (
-              <tr className="text-center">
-                <td colSpan={"8"}>There is no data on the cart.</td>
+      <Helmet>
+        <title>Your data on cart</title>
+      </Helmet>
+      <div className="w-11/12 md:w-9/12 mx-auto my-5">
+        <div className="overflow-x-auto">
+          <table className="table">
+            {/* head */}
+            <thead>
+              <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Rating</th>
+                <th>Price</th>
+                <th>Action</th>
               </tr>
-            ) : (
-              myCart.map((cart) => (
-                <tr key={cart._id}>
-                  <th></th>
-                  <td>{cart.productName}</td>
-                  <td>{cart.rating}</td>
-                  <td>${cart.price}</td>
-                  <td>
-                    <button
-                      className="btn btn-success rounded-none"
-                      onClick={() => deleteAnItem(cart._id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
+            </thead>
+            <tbody>
+              {myNewCart.length === 0 ? (
+                <tr className="text-center">
+                  <td colSpan={"8"}>There is no data on the cart.</td>
                 </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+              ) : (
+                myCart.map((cart) => (
+                  <tr key={cart._id}>
+                    <th></th>
+                    <td>{cart.productName}</td>
+                    <td>{cart.rating}</td>
+                    <td>${cart.price}</td>
+                    <td>
+                      <button
+                        className="btn btn-success rounded-none"
+                        onClick={() => deleteAnItem(cart._id)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
     </>
   );
 };
