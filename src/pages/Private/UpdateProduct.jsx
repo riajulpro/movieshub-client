@@ -33,16 +33,13 @@ const UpdateProduct = () => {
       rating,
     };
 
-    fetch(
-      `https://riajulpro-assingment-10-hvg430qx7-riajul-pros-projects.vercel.app/products/${data._id}`,
-      {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(productInfo),
-      }
-    )
+    fetch(`http://localhost:5000/products/${data._id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(productInfo),
+    })
       .then((res) => res.json())
       .then((data) => {
         Swal.fire(

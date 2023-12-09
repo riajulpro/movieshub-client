@@ -5,9 +5,7 @@ const Brands = () => {
   const [brands, setBrands] = useState([]);
 
   useEffect(() => {
-    fetch(
-      "https://riajulpro-assingment-10-hvg430qx7-riajul-pros-projects.vercel.app/brands"
-    )
+    fetch("http://localhost:5000/brands")
       .then((res) => res.json())
       .then((data) => setBrands(data));
   }, []);

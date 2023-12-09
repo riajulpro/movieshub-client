@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthProvider } from "../../context/AuthContext";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 
 const Login = () => {
   const navigateTo = useNavigate();
@@ -61,7 +62,21 @@ const Login = () => {
           "Now you can access all features.",
           "success"
         );
-        navigateTo(location?.state ? location.state : "/");
+        // navigateTo(location?.state ? location.state : "/");
+        // Access token
+
+        const dataPayload = { email };
+
+        axios
+          .post("http://localhost:5000/jwt", dataPayload, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log(res.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((error) => {
         Swal.fire(

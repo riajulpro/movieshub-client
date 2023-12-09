@@ -45,9 +45,7 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://riajulpro-assingment-10-hvg430qx7-riajul-pros-projects.vercel.app/products/${params.id}`
-          ),
+          fetch(`http://localhost:5000/products/${params.id}`),
       },
       {
         path: "/brand_products",
@@ -61,9 +59,7 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://riajulpro-assingment-10-hvg430qx7-riajul-pros-projects.vercel.app/products/${params.id}`
-          ),
+          fetch(`http://localhost:5000/products/${params.id}`),
       },
     ],
   },

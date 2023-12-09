@@ -1,4 +1,7 @@
-<h1>Features</h1>
+# MoviesHub
+
+## Features
+
 <ul>
     <li>You can see all of the details by clicking the view details button.</li>
     <li>If you're a login user, you can add movies.</li>
@@ -6,5 +9,10 @@
     <li>You can add any products to the cart and delete data</li>
     <li>You can login with google or github or email and password.</li>
 </ul>
-<h3>Live Links to see the webpage</h3>
-<a href="https://rp-assignment-10.web.app/">see the demo</a>
+
+## Technologies that has been used
+[![Technologies](https://skillicons.dev/icons?i=js,html,css,tailwind,react,mongodb,nodejs)](https://skillicons.dev)
+
+## Live Links to see the webpage
+
+- Links: [Live Link](https://rp-assignment-10.web.app) | [Server Side Code](https://github.com/riajulpro/movieshub-server.git)

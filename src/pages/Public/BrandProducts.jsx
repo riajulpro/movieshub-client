@@ -14,9 +14,7 @@ const BrandProducts = () => {
   const location = useLocation();
 
   useEffect(() => {
-    fetch(
-      "https://riajulpro-assingment-10-hvg430qx7-riajul-pros-projects.vercel.app/products"
-    )
+    fetch("http://localhost:5000/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);

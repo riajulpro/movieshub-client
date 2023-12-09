@@ -26,16 +26,13 @@ const AddProduct = () => {
 
     console.log(productInfo);
 
-    fetch(
-      "https://riajulpro-assingment-10-hvg430qx7-riajul-pros-projects.vercel.app/products",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(productInfo),
-      }
-    )
+    fetch("http://localhost:5000/products", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(productInfo),
+    })
       .then((res) => res.json())
       .then((data) => {
         Swal.fire(
