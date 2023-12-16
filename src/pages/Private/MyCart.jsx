@@ -8,7 +8,7 @@ const MyCart = () => {
   const { user } = useContext(AuthProvider);
 
   useEffect(() => {
-    fetch("http://localhost:5000/myCart")
+    fetch("https://movieshub-server-rp.vercel.app/myCart")
       .then((res) => res.json())
       .then((data) => {
         const currentData = data.filter(
@@ -25,7 +25,7 @@ const MyCart = () => {
   }, [myCart]);
 
   const deleteAnItem = (itemId) => {
-    fetch(`http://localhost:5000/my_cart/${itemId}`, {
+    fetch(`https://movieshub-server-rp.vercel.app/my_cart/${itemId}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

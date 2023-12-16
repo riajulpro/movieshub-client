@@ -11,8 +11,9 @@
 </ul>
 
 ## Technologies that has been used
+
 [![Technologies](https://skillicons.dev/icons?i=js,html,css,tailwind,react,mongodb,nodejs)](https://skillicons.dev)
 
 ## Live Links to see the webpage
 
-- Links: [Live Link](https://rp-assignment-10.web.app) | [Server Side Code](https://github.com/riajulpro/movieshub-server.git)
+- Links: [Live Link](https://riajulpro-movieshub.surge.sh) | [Server Side Code](https://github.com/riajulpro/movieshub-server.git)

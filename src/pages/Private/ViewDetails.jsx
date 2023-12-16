@@ -37,7 +37,7 @@ const ViewDetails = () => {
   console.log(cartData, id, user);
 
   const addToCart = () => {
-    fetch("http://localhost:5000/myCart", {
+    fetch("https://movieshub-server-rp.vercel.app/myCart", {
       method: "POST",
       headers: {
         "content-type": "application/json",

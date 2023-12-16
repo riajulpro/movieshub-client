@@ -26,7 +26,7 @@ const AddProduct = () => {
 
     console.log(productInfo);
 
-    fetch("http://localhost:5000/products", {
+    fetch("https://movieshub-server-rp.vercel.app/products", {
       method: "POST",
       headers: {
         "content-type": "application/json",

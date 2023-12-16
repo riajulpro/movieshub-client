@@ -14,7 +14,7 @@ const BrandProducts = () => {
   const location = useLocation();
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://movieshub-server-rp.vercel.app/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);

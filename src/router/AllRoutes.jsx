@@ -45,7 +45,7 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(`https://movieshub-server-rp.vercel.app/products/${params.id}`),
       },
       {
         path: "/brand_products",
@@ -59,7 +59,7 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(`https://movieshub-server-rp.vercel.app/products/${params.id}`),
       },
     ],
   },

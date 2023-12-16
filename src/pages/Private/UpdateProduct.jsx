@@ -33,7 +33,7 @@ const UpdateProduct = () => {
       rating,
     };
 
-    fetch(`http://localhost:5000/products/${data._id}`, {
+    fetch(`https://movieshub-server-rp.vercel.app/products/${data._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

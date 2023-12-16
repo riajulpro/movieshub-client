@@ -68,7 +68,7 @@ const Login = () => {
         const dataPayload = { email };
 
         axios
-          .post("http://localhost:5000/jwt", dataPayload, {
+          .post("https://movieshub-server-rp.vercel.app/jwt", dataPayload, {
             withCredentials: true,
           })
           .then((res) => {

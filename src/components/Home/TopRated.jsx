@@ -14,7 +14,7 @@ const TopRated = () => {
   const topRated = products.filter((product) => product.rating >= 7);
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://movieshub-server-rp.vercel.app/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
