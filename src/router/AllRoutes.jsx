@@ -10,6 +10,9 @@ import UpdateProduct from "../pages/Private/UpdateProduct";
 import BrandProducts from "../pages/Public/BrandProducts";
 import ViewDetails from "../pages/Private/ViewDetails";
 import PrivateRoutes from "./PrivateRoutes";
+import Categories from "../pages/Public/Categories";
+import Genres from "../pages/Public/Genres";
+import Recent from "../pages/Public/Recent";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +20,22 @@ const router = createBrowserRouter([
     element: <Template />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/categories",
+        element: <Categories />,
+      },
+      {
+        path: "/genres",
+        element: <Genres />,
+      },
+      {
+        path: "/recent",
+        element: <Recent />,
+      },
       {
         path: "/",
         element: <Home />,
