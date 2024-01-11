@@ -1,9 +1,16 @@
+import { useState } from "react";
 import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
+import WaitingAnim from "../../assets/animation/loadingAnim.json";
+import Lottie from "react-lottie-player";
 
 const AddProduct = () => {
+  const [waiting, setWaiting] = useState(false);
+
   const addProductHandle = (event) => {
     event.preventDefault();
+
+    setWaiting(true);
 
     const form = event.target;
     const imageURL = form.imageURL.value;
@@ -24,8 +31,6 @@ const AddProduct = () => {
       rating,
     };
 
-    console.log(productInfo);
-
     fetch("https://movieshub-server-rp.vercel.app/products", {
       method: "POST",
       headers: {
@@ -41,111 +46,134 @@ const AddProduct = () => {
           "success"
         );
         console.log(data);
+        setWaiting(false);
       });
 
     form.reset();
   };
+
   return (
     <div>
       <Helmet>
         <title>Add Products now</title>
       </Helmet>
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row md:w-9/12 mx-auto">
-          <div className="text-center lg:text-left">
+      <div className="lg:w-10/12 mx-auto my-3">
+        <div className="bg-slate-800 p-10 rounded-md">
+          <div className="text-center mb-5">
             <h1 className="text-5xl font-bold">Add Product!</h1>
-            <p className="py-6">
+            <p className="">
               You should add all the information to save it into the database.
             </p>
           </div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form className="card-body" onSubmit={addProductHandle}>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Image URL</span>
+          <div className="">
+            <form
+              className="grid grid-cols-1 lg:grid-cols-2 gap-3"
+              onSubmit={addProductHandle}
+            >
+              <div className="">
+                <label className="">
+                  <span className="">Thumbnail</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="enter image url"
+                  placeholder="Enter image url"
                   name="imageURL"
-                  className="input input-bordered"
+                  className="w-full p-2 rounded bg-slate-600 focus:bg-slate-700"
                   required
                 />
               </div>
               <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Movies Name</span>
+                <label className="">
+                  <span className="">Movies Name</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="movies name"
+                  placeholder="Movies name"
                   name="productName"
-                  className="input input-bordered"
+                  className="w-full p-2 rounded bg-slate-600 focus:bg-slate-700"
                   required
                 />
               </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Brand Name</span>
+              <div className="">
+                <label className="">
+                  <span className="">Brand Name</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="enter brand name"
+                  placeholder="Enter brand name"
                   name="brandName"
-                  className="input input-bordered"
+                  className="w-full p-2 rounded bg-slate-600 focus:bg-slate-700"
                   required
                 />
               </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Movies Type</span>
+              <div className="">
+                <label className="">
+                  <span className="">Movies Type</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="content type"
+                  placeholder="Content type"
                   name="type"
-                  className="input input-bordered"
+                  className="w-full p-2 rounded bg-slate-600 focus:bg-slate-700"
                   required
                 />
               </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Movies Price</span>
+              <div className="">
+                <label className="">
+                  <span className="">Movies Price</span>
                 </label>
                 <input
                   type="text"
                   placeholder="$ price"
                   name="price"
-                  className="input input-bordered"
+                  className="w-full p-2 rounded bg-slate-600 focus:bg-slate-700"
                   required
                 />
               </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Short Description</span>
+              <div className="">
+                <label className="">
+                  <span className="">Rating</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="short description"
-                  name="description"
-                  className="input input-bordered"
-                  required
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Rating</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="rating out of 10"
+                  placeholder="Rating out of 10"
                   name="rating"
-                  className="input input-bordered"
+                  className="w-full p-2 rounded bg-slate-600 focus:bg-slate-700"
                   required
                 />
               </div>
-              <div className="form-control mt-6">
-                <button className="btn btn-primary">Add Product</button>
+              <div className="col-span-2">
+                <label className="">
+                  <span className="">Short Description</span>
+                </label>
+                <textarea
+                  rows="4"
+                  type="text"
+                  placeholder="Short description"
+                  name="description"
+                  className="w-full p-2 rounded bg-slate-600 focus:bg-slate-700"
+                  required
+                />
+              </div>
+
+              <div className="col-span-2">
+                {waiting ? (
+                  <button
+                    className="disabled:bg-slate-700 px-10 rounded-md"
+                    disabled
+                  >
+                    <Lottie
+                      animationData={WaitingAnim}
+                      className="h-14 w-14"
+                      play
+                      loop
+                    />
+                  </button>
+                ) : (
+                  <button className="bg-slate-950 hover:bg-slate-900 active:scale-95 py-3 px-4 rounded-md">
+                    Add Product
+                  </button>
+                )}
               </div>
             </form>
           </div>

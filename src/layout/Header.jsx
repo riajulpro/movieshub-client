@@ -3,10 +3,21 @@ import { useContext, useState } from "react";
 import { AuthProvider } from "../context/AuthContext";
 import { Link, useLocation } from "react-router-dom";
 import { IoIosSearch } from "react-icons/io";
+import { FaShoppingCart } from "react-icons/fa";
+import { IoSettingsOutline } from "react-icons/io5";
+import { IoLogOut } from "react-icons/io5";
 
 const Header = () => {
   const [searchBtn, setSearchBtn] = useState(false);
+
   const { user, logoutAccount } = useContext(AuthProvider);
+
+  const logOut = () => {
+    logoutAccount()
+      .then(() => console.log("Successfully Logged out!"))
+      .catch((err) => console.log(err));
+  };
+
   const { pathname } = useLocation();
 
   const links = [
@@ -35,7 +46,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-slate-800 shadow-md sticky top-0">
+    <header className="bg-slate-800 shadow-md sticky top-0 z-50">
       <div className="w-full lg:w-10/12 mx-auto flex justify-between items-center gap-5">
         <div className="md:bg-slate-600 p-3 md:p-5 flex items-center gap-1 md:gap-2">
           <img src={LogoIcon} alt="logo" className="h-3 w-3 md:h-6 md:w-6" />
@@ -58,26 +69,42 @@ const Header = () => {
           ))}
         </nav>
         <div className={`flex items-center gap-2`}>
-          <Link
-            to={"/login"}
-            className={`${
-              searchBtn ? "hidden md:block" : "block"
-            } text-xs md:text-sm text-red-500 hover:text-red-600 font-bold`}
-          >
-            Go Premium
-          </Link>
+          {user ? (
+            <>
+              <button onClick={logOut}>
+                <IoLogOut className="text-xl" />
+              </button>
+              <Link to={"/my_cart"}>
+                <FaShoppingCart className="text-lg hover:text-red-400" />
+              </Link>
+            </>
+          ) : (
+            <Link
+              to={"/login"}
+              className={`${
+                searchBtn ? "hidden md:block" : "block"
+              } text-xs md:text-sm text-red-500 hover:text-red-600 font-bold`}
+            >
+              Go Premium
+            </Link>
+          )}
           <form onSubmit={searchNow}>
             <input
               type="text"
               name="searchInput"
               className={`${
-                searchBtn ? "w-32 md:w-48 px-2 rounded-full" : "w-0"
+                searchBtn ? "w-24 md:w-48 px-2 rounded-full" : "w-0"
               } duration-300 bg-slate-600`}
             />
           </form>
           <button onClick={() => setSearchBtn(!searchBtn)}>
-            <IoIosSearch className="text-lg mr-2" />
+            <IoIosSearch className="text-lg mr-2 hover:text-red-400" />
           </button>
+          {user && (
+            <Link to={"/add_product"}>
+              <IoSettingsOutline className="hover:text-red-400" />
+            </Link>
+          )}
         </div>
       </div>
     </header>

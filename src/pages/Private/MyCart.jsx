@@ -2,9 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import { AuthProvider } from "../../context/AuthContext";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
+import { RiMovie2Line } from "react-icons/ri";
 
 const MyCart = () => {
   const [myCart, setMyCart] = useState([]);
+
+  const [myNewCart, setMyNewCart] = useState([]);
+
   const { user } = useContext(AuthProvider);
 
   useEffect(() => {
@@ -17,8 +21,6 @@ const MyCart = () => {
         setMyCart(currentData);
       });
   }, [user]);
-
-  const [myNewCart, setMyNewCart] = useState([]);
 
   useEffect(() => {
     setMyNewCart(myCart);
@@ -46,44 +48,31 @@ const MyCart = () => {
       <Helmet>
         <title>Your data on cart</title>
       </Helmet>
-      <div className="w-11/12 md:w-9/12 mx-auto my-5">
+      <div className="w-full lg:w-10/12 mx-auto my-5">
         <div className="overflow-x-auto">
-          <table className="table">
-            {/* head */}
-            <thead>
-              <tr>
-                <th></th>
-                <th>Name</th>
-                <th>Rating</th>
-                <th>Price</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {myNewCart.length === 0 ? (
-                <tr className="text-center">
-                  <td colSpan={"8"}>There is no data on the cart.</td>
-                </tr>
-              ) : (
-                myNewCart.map((cart) => (
-                  <tr key={cart._id}>
-                    <th></th>
-                    <td>{cart.productName}</td>
-                    <td>{cart.rating}</td>
-                    <td>${cart.price}</td>
-                    <td>
-                      <button
-                        className="btn btn-success rounded-none"
-                        onClick={() => deleteAnItem(cart._id)}
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
+          {myNewCart.length === 0 ? (
+            <div className="flex flex-col justify-center items-center">
+              <RiMovie2Line className="text-9xl" />
+              <div>There is no movies on the cart.</div>
+            </div>
+          ) : (
+            myNewCart.map((cart) => (
+              <div key={cart._id}>
+                <div></div>
+                <div>{cart.productName}</div>
+                <div>{cart.rating}</div>
+                <div>${cart.price}</div>
+                <div>
+                  <button
+                    className="btn btn-success rounded-none"
+                    onClick={() => deleteAnItem(cart._id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            ))
+          )}
         </div>
       </div>
     </>

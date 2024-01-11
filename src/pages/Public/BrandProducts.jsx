@@ -23,12 +23,6 @@ const BrandProducts = () => {
     (product) => product.brandName === location.state
   );
 
-  // if (currentBrandProducts.length === 0) {
-  //   console.log("there is no existing product of the brand");
-  // } else {
-  //   console.log(currentBrandProducts);
-  // }
-
   return (
     <>
       <Helmet>
@@ -81,7 +75,7 @@ const BrandProducts = () => {
               <figure className="flex-1">
                 <img src={product.imageURL} alt="Movie" className="h-80" />
               </figure>
-              <div className="card-body flex-1">
+              <div className="flex-1">
                 <h2 className="card-title">Name: {product.productName}</h2>
                 <p className="text-sm">Brand: {product.brandName}</p>
                 <p className="text-sm">Type: {product.type}</p>

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import { AuthProvider } from "../../context/AuthContext";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
@@ -60,25 +60,40 @@ const ViewDetails = () => {
       <Helmet>
         <title>You are watching the data information</title>
       </Helmet>
-      <div
-        key={_id}
-        className="card lg:card-side bg-base-100 shadow-xl my-5 w-11/12 md:w-9/12 mx-auto"
-      >
-        <figure className="flex-1">
-          <img src={imageURL} alt="Movie" className="" />
+      <div className="bg-slate-800 w-11/12 lg:w-10/12 mx-auto my-3 flex lg:flex-row flex-col gap-3">
+        <figure className="flex-2">
+          <img src={imageURL} alt="Movie" className="md:h-[80vh] w-full" />
         </figure>
-        <div className="card-body flex-1">
-          <h2 className="card-title">{productName}</h2>
-          <div className="mb-auto">
-            <p>Type: {type}</p>
-            <p>Brand Name: {brandName}</p>
-            <p>Price: ${price}</p>
-            <p>Rating: {rating}/10</p>
-            <p>Description: {description}</p>
+        <div className="relative flex-1 p-3 md:py-5 md:pr-5">
+          <h2 className="text-4xl font-bold">{productName}</h2>
+          <div className="">
+            <p>
+              <span className="font-bold">Type:</span> {type}
+            </p>
+            <p>
+              <span className="font-bold">Brand Name:</span> {brandName}
+            </p>
+            <p>
+              <span className="font-bold">Price:</span> ${price}
+            </p>
+            <p>
+              <span className="font-bold">Rating:</span> {rating}/10
+            </p>
+            <p>
+              <span className="font-bold">Description:</span> {description}
+            </p>
           </div>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary" onClick={addToCart}>
-              Add to Cart
+          <div className="mt-5 md:mt-0 md:absolute right-10 bottom-8">
+            <Link to={`/update_product/${_id}`}>
+              <button className="bg-slate-950 hover:bg-slate-900 px-4 py-2 rounded-md mr-2">
+                Update
+              </button>
+            </Link>
+            <button
+              className="bg-slate-950 hover:bg-slate-900 px-4 py-2 rounded-md"
+              onClick={addToCart}
+            >
+              Purchase
             </button>
           </div>
         </div>

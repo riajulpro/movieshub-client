@@ -1,18 +1,22 @@
+import { useState } from "react";
 import { Helmet } from "react-helmet";
-import { useLoaderData, useParams } from "react-router-dom";
+import Lottie from "react-lottie-player";
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import WaitingAnim from "../../assets/animation/loadingAnim.json";
 
 const UpdateProduct = () => {
-  const id = useParams();
+  const [waiting, setWaiting] = useState(false);
+
   const data = useLoaderData();
 
   const { imageURL, productName, brandName, type, price, description, rating } =
     data;
 
-  console.log(id, data);
-
   const updateProductHandle = (event) => {
     event.preventDefault();
+
+    setWaiting(true);
 
     const form = event.target;
     const imageURL = form.imageURL.value;
@@ -48,6 +52,7 @@ const UpdateProduct = () => {
           "success"
         );
         console.log(data);
+        setWaiting(false);
       });
   };
 
@@ -56,107 +61,129 @@ const UpdateProduct = () => {
       <Helmet>
         <title>Update the data of {productName}</title>
       </Helmet>
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row md:w-9/12 mx-auto">
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Update Product!</h1>
-            <p className="py-6">Change the value what you need to change.</p>
+      <div className="lg:w-10/12 mx-auto my-3">
+        <div className="bg-slate-800 p-10 rounded-md">
+          <div className="text-center mb-5">
+            <h1 className="text-5xl font-bold">Update the Product!</h1>
+            <p className="">
+              You should add all the information to save it into the database.
+            </p>
           </div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form className="card-body" onSubmit={updateProductHandle}>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Image URL</span>
+          <div className="">
+            <form
+              className="grid grid-cols-1 lg:grid-cols-2 gap-3"
+              onSubmit={updateProductHandle}
+            >
+              <div className="">
+                <label className="">
+                  <span className="">Thumbnail</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="enter image url"
-                  name="imageURL"
                   defaultValue={imageURL}
-                  className="input input-bordered"
+                  placeholder="Enter image url"
+                  name="imageURL"
+                  className="w-full p-2 rounded bg-slate-600 focus:bg-slate-700"
                   required
                 />
               </div>
               <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Product Name</span>
+                <label className="">
+                  <span className="">Movies Name</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="product name"
-                  name="productName"
                   defaultValue={productName}
-                  className="input input-bordered"
+                  placeholder="Movies name"
+                  name="productName"
+                  className="w-full p-2 rounded bg-slate-600 focus:bg-slate-700"
                   required
                 />
               </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Brand Name</span>
+              <div className="">
+                <label className="">
+                  <span className="">Brand Name</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="enter brand name"
-                  name="brandName"
                   defaultValue={brandName}
-                  className="input input-bordered"
+                  placeholder="Enter brand name"
+                  name="brandName"
+                  className="w-full p-2 rounded bg-slate-600 focus:bg-slate-700"
                   required
                 />
               </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Product Type</span>
+              <div className="">
+                <label className="">
+                  <span className="">Movies Type</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="product type"
-                  name="type"
                   defaultValue={type}
-                  className="input input-bordered"
+                  placeholder="Content type"
+                  name="type"
+                  className="w-full p-2 rounded bg-slate-600 focus:bg-slate-700"
                   required
                 />
               </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Product Price</span>
+              <div className="">
+                <label className="">
+                  <span className="">Movies Price</span>
                 </label>
                 <input
                   type="text"
+                  defaultValue={price}
                   placeholder="$ price"
                   name="price"
-                  defaultValue={price}
-                  className="input input-bordered"
+                  className="w-full p-2 rounded bg-slate-600 focus:bg-slate-700"
                   required
                 />
               </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Short Description</span>
-                </label>
-                <input
-                  type="textarea"
-                  placeholder="short description"
-                  name="description"
-                  defaultValue={description}
-                  className="input input-bordered"
-                  required
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Rating</span>
+              <div className="">
+                <label className="">
+                  <span className="">Rating</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="rating out of 10"
-                  name="rating"
                   defaultValue={rating}
-                  className="input input-bordered"
+                  placeholder="Rating out of 10"
+                  name="rating"
+                  className="w-full p-2 rounded bg-slate-600 focus:bg-slate-700"
                   required
                 />
               </div>
-              <div className="form-control mt-6">
-                <button className="btn btn-primary">Update Product</button>
+              <div className="col-span-2">
+                <label className="">
+                  <span className="">Short Description</span>
+                </label>
+                <textarea
+                  rows="4"
+                  type="text"
+                  defaultValue={description}
+                  placeholder="Short description"
+                  name="description"
+                  className="w-full p-2 rounded bg-slate-600 focus:bg-slate-700"
+                  required
+                />
+              </div>
+              <div className="col-span-2">
+                {waiting ? (
+                  <button
+                    className="disabled:bg-slate-700 px-10 rounded-md"
+                    disabled
+                  >
+                    <Lottie
+                      animationData={WaitingAnim}
+                      className="h-14 w-14"
+                      play
+                      loop
+                    />
+                  </button>
+                ) : (
+                  <button className="bg-slate-950 hover:bg-slate-900 active:scale-95 py-3 px-4 rounded-md">
+                    Update Product
+                  </button>
+                )}
               </div>
             </form>
           </div>
