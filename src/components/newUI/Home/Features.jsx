@@ -15,9 +15,9 @@ const Features = () => {
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
+
   return (
     <div className="">
-      <h1 className="text-3xl mb-3 font-bold">Top Rated Movies</h1>
       <Swiper
         slidesPerView={2}
         spaceBetween={12}

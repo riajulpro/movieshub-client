@@ -6,9 +6,7 @@ import { RiMovie2Line } from "react-icons/ri";
 
 const MyCart = () => {
   const [myCart, setMyCart] = useState([]);
-
   const [myNewCart, setMyNewCart] = useState([]);
-
   const { user } = useContext(AuthProvider);
 
   useEffect(() => {
@@ -49,7 +47,7 @@ const MyCart = () => {
         <title>Your data on cart</title>
       </Helmet>
       <div className="w-full lg:w-10/12 mx-auto my-5">
-        <div className="overflow-x-auto">
+        <div className="grid grid-cols-5 gap-3">
           {myNewCart.length === 0 ? (
             <div className="flex flex-col justify-center items-center">
               <RiMovie2Line className="text-9xl" />
@@ -57,18 +55,26 @@ const MyCart = () => {
             </div>
           ) : (
             myNewCart.map((cart) => (
-              <div key={cart._id}>
-                <div></div>
-                <div>{cart.productName}</div>
-                <div>{cart.rating}</div>
-                <div>${cart.price}</div>
-                <div>
-                  <button
-                    className="btn btn-success rounded-none"
-                    onClick={() => deleteAnItem(cart._id)}
-                  >
-                    Delete
-                  </button>
+              <div key={cart._id} className="flex gap-1">
+                <div className="flex-1">
+                  <img
+                    src={cart.imageURL}
+                    alt=""
+                    className="h-36 w-24 object-cover"
+                  />
+                </div>
+                <div className="flex-1">
+                  <p>{cart.productName}</p>
+                  <p>{cart.rating}</p>
+                  <p>${cart.price}</p>
+                  <p>
+                    <button
+                      className="btn btn-success rounded-none"
+                      onClick={() => deleteAnItem(cart._id)}
+                    >
+                      Delete
+                    </button>
+                  </p>
                 </div>
               </div>
             ))
