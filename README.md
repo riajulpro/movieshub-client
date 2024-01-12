@@ -16,4 +16,4 @@
 
 ## Live Links to see the webpage
 
-- Links: [Live Link](https://riajulpro-movieshub.surge.sh) | [Server Side Code](https://github.com/riajulpro/movieshub-server.git)
+- Links: [Live Link](https://movieshub-rp.netlify.app) | [Server Side Code](https://github.com/riajulpro/movieshub-server.git)
